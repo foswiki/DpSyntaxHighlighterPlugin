@@ -84,8 +84,8 @@ function hello () {
 |  14046 | Initial version |
 |  TWiki Dependency: | $TWiki::Plugins::VERSION 1.1 |
 |  Dp Syntax Highlighter Home | http://code.google.com/p/syntaxhighlighter |
-|  Plugin Home: | http://twiki.org/cgi-bin/view/Plugins/DpSyntaxHighlighterPlugin |
-|  Feedback: | http://twiki.org/cgi-bin/view/Plugins/DpSyntaxHighlighterPluginDev |
-|  Appraisal: | http://twiki.org/cgi-bin/view/Plugins/DpSyntaxHighlighterPluginAppraisal |
+|  Plugin Home: | http://foswiki.org/Extensions/DpSyntaxHighlighterPlugin |
+|  Feedback: | http://foswiki.org/Extensions/DpSyntaxHighlighterPluginDev |
+|  Appraisal: | http://foswiki.org/twikiExtensions/DpSyntaxHighlighterPluginAppraisal |
 
 <!-- Do _not_ attempt to edit this topic; it is auto-generated. Please add comments/questions/remarks to the Dev topic instead. -->
