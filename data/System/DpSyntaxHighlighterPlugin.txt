@@ -77,6 +77,7 @@ function hello () {
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
 |  Dp Syntax Highlighter License: | [[http://www.gnu.org/licenses/lgpl.html][LGPL (Gnu Lesser General Public License)]] |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  25 Jan 2009 | Added missing screenshot  Foswiki:Main.WillNorris |
 |  07 Jan 2009 | Ported to Foswiki; Will now use jQuery if found; Added support for Perl. Thanks to [[http://code.google.com/p/syntaxhighlighter/issues/detail?id=113&sort=-modified&colspec=ID%20Type%20Status%20Priority%20Milestone%20Owner%20Summary%20Modified][Marty Kube]]. |
 |  25 Mar 2008 | 1.5.2 -- Arthur Clemens: Added support for !ActionScript 3. Thanks to [[http://www.digitalflipbook.com/archives/2007/09/as3_syntax_high.php][Mark Walters]] (digitalflipbook.com). |
 |  14646 | Fixed adding JS into highlighted HTML (#3) |
