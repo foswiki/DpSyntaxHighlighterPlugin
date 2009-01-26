@@ -1,7 +1,7 @@
 # Release manifest for DpSyntaxHighlighterPlugin
 data/System/DpSyntaxHighlighterPlugin.txt 0644 Documentation
 lib/Foswiki/Plugins/DpSyntaxHighlighterPlugin.pm 0644 Perl module
-pub/System/DpSyntaxHighlighterPlugin/dp.SyntaxHighlighter/screenshot.png 0644
+pub/System/DpSyntaxHighlighterPlugin/screenshot.png 0644
 pub/System/DpSyntaxHighlighterPlugin/dp.SyntaxHighlighter/Scripts/clipboard.swf 0644
 pub/System/DpSyntaxHighlighterPlugin/dp.SyntaxHighlighter/Scripts/shBrushCSharp.js 0644
 pub/System/DpSyntaxHighlighterPlugin/dp.SyntaxHighlighter/Scripts/shBrushCpp.js 0644
