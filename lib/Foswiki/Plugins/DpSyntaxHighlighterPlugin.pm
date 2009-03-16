@@ -12,7 +12,7 @@
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-# For licensing info read LICENSE file in the TWiki root.
+# For licensing info read LICENSE file in the Foswiki root.
 
 package Foswiki::Plugins::DpSyntaxHighlighterPlugin;
 use strict;
@@ -20,21 +20,15 @@ use strict;
 use vars qw( $VERSION $RELEASE $NO_PREFS_IN_TOPIC $SHORTDESCRIPTION $pluginName $rootDir $doneHead );
 
 $VERSION = '$Rev: 9813$';
-$RELEASE = '1.5.2';
+$RELEASE = '1.1';
 $pluginName = 'DpSyntaxHighlighterPlugin';
 $NO_PREFS_IN_TOPIC = 1;
 $SHORTDESCRIPTION = 'Client side syntax highlighting using the [[http://code.google.com/p/syntaxhighlighter/][dp.SyntaxHighlighter]]';
 
 sub initPlugin {
 
-    # check for Plugins.pm versions
-    if( $Foswiki::Plugins::VERSION < 1.026 ) {
-        Foswiki::Func::writeWarning( "Version mismatch between $pluginName and Plugins.pm" );
-        return 0;
-    }
-
     $rootDir = Foswiki::Func::getPubUrlPath() . '/' . # /pub/
-               Foswiki::Func::getTwikiWebname() . '/' . # TWiki/
+               $Foswiki::cfg{SystemWebName} . '/' . # System/
 	       $pluginName . '/' . # DpSyntaxHighlighterPlugin
                'dp.SyntaxHighlighter';
 
@@ -53,7 +47,7 @@ sub commonTagsHandler {
 # handles the tag
 sub _handleTag {
 
-    my %params = TWiki::Func::extractParameters($1);
+    my %params = Foswiki::Func::extractParameters($1);
     my $el = $params{el} || 'pre';
     my $lang = lc$params{lang} || lc$params{_DEFAULT}; # language
     my $code = $2; # code to highlight
