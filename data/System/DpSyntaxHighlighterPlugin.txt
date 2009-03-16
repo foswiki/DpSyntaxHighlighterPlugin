@@ -69,7 +69,8 @@ function hello () {
 ---++ Plugin Info
 
 |  Plugin Author(s): | Foswiki:Main.AndrewJones |
-|  Plugin Version: | %$RELEASE% (%$VERSION%) |
+|  Plugin Release: | %$RELEASE% |
+|  Plugin Version: | %$VERSION% |
 |  Dp Syntax Highlighter Version: | 1.5.1 |
 |  Copyright: | &copy; 2007 - 2009 Foswiki:Main.AndrewJones |
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
