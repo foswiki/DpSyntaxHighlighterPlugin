@@ -24,6 +24,14 @@ The code goes between the tags =%<nop>CODE{...}%= and =%ENDCODE%=.
 | =el="..."= | HTML element to display the code in. Can be =pre= or =textarea=. Default is =pre=. See [[#Pre_vs_Textarea]]. |
 | =rows="value"= %BR% =cols="value"= | Sets the rows and columns attributes. %BR% Recommend if using textarea so the code can be seen clearly when !JavaScript is not available. |
 
+---+++ Using %TOPIC% With Other Syntax Highlighters
+
+Currently all the Foswiki syntax highlighting plugins use the same =%<nop>CODE%= syntax. This allows you to switch the highlighter you use without having to update all your topics to the new syntax. However, it also means that if you have two or more highlighting plugins installed on your system, the plugin that is first in =$Foswiki::cfg{PluginsOrder}= (or by default, first alphabetically) will consume all the =%<nop>CODE%= blocks.
+
+Version 1.2 of this plugin added support for using the %<nop>CODE_DP% syntax, which allows you to explicitly which plugin you want to highlight your code.
+
+Clearly this is not the best solution to the problem of using more than one highlighting plugin. You can read the background on why this approach was taking in the [Foswikitask:Item1353][task report]].
+
 ---+++ Pre vs Textarea
 
 There are known problems when displaying XML (and HTML) in a =pre= element. See http://code.google.com/p/syntaxhighlighter/wiki/PreAndTextarea for more information.
@@ -76,6 +84,7 @@ function hello () {
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
 |  Dp Syntax Highlighter License: | [[http://www.gnu.org/licenses/lgpl.html][LGPL (Gnu Lesser General Public License)]] |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  29 Mar 2009 | 1.2: Added =%<nop>CODE_DP%= syntax so it can be used with other syntax highlighters (Foswikitask:Item1353) |
 |  16 Mar 2009 | 1.1: Removed call to depreciated function. Will work correctly with TWikiCompatibilityPlugin disabled. |
 |  25 Jan 2009 | Added missing screenshot  Foswiki:Main.WillNorris |
 |  07 Jan 2009 | 1.0: Ported to Foswiki; Will now use jQuery if found; Added support for Perl. Thanks to [[http://code.google.com/p/syntaxhighlighter/issues/detail?id=113&sort=-modified&colspec=ID%20Type%20Status%20Priority%20Milestone%20Owner%20Summary%20Modified][Marty Kube]]. |

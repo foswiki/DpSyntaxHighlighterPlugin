@@ -19,11 +19,11 @@ use strict;
 
 use vars qw( $VERSION $RELEASE $NO_PREFS_IN_TOPIC $SHORTDESCRIPTION $pluginName $rootDir $doneHead );
 
-$VERSION = '$Rev: 9813$';
-$RELEASE = '1.1';
-$pluginName = 'DpSyntaxHighlighterPlugin';
-$NO_PREFS_IN_TOPIC = 1;
-$SHORTDESCRIPTION = 'Client side syntax highlighting using the [[http://code.google.com/p/syntaxhighlighter/][dp.SyntaxHighlighter]]';
+our $VERSION = '$Rev: 9813$';
+our $RELEASE = '1.2';
+our $pluginName = 'DpSyntaxHighlighterPlugin';
+our $NO_PREFS_IN_TOPIC = 1;
+our $SHORTDESCRIPTION = 'Client side syntax highlighting using the [[http://code.google.com/p/syntaxhighlighter/][dp.SyntaxHighlighter]]';
 
 sub initPlugin {
 
@@ -40,7 +40,7 @@ sub initPlugin {
 
 sub commonTagsHandler {
 
-    $_[0] =~ s/%CODE{(.*?)}%\s*(.*?)%ENDCODE%/&_handleTag/egs;
+    $_[0] =~ s/%CODE(?:_DP)?{(.*?)}%\s*(.*?)%ENDCODE%/&_handleTag/egs;
 
 }
 
