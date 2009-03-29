@@ -30,7 +30,7 @@ Currently all the Foswiki syntax highlighting plugins use the same =%<nop>CODE%=
 
 Version 1.2 of this plugin added support for using the %<nop>CODE_DP% syntax, which allows you to explicitly which plugin you want to highlight your code.
 
-Clearly this is not the best solution to the problem of using more than one highlighting plugin. You can read the background on why this approach was taking in the [Foswikitask:Item1353][task report]].
+Clearly this is not the best solution to the problem of using more than one highlighting plugin. You can read the background on why this approach was taken in the [Foswikitask:Item1353][task report]].
 
 ---+++ Pre vs Textarea
 
