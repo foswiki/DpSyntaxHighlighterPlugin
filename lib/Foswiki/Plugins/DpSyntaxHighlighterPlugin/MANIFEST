@@ -11,6 +11,7 @@ pub/System/DpSyntaxHighlighterPlugin/dp.SyntaxHighlighter/Scripts/shBrushJScript
 pub/System/DpSyntaxHighlighterPlugin/dp.SyntaxHighlighter/Scripts/shBrushJava.js 0644
 pub/System/DpSyntaxHighlighterPlugin/dp.SyntaxHighlighter/Scripts/shBrushPerl.js 0644
 pub/System/DpSyntaxHighlighterPlugin/dp.SyntaxHighlighter/Scripts/shBrushPhp.js 0644
+pub/System/DpSyntaxHighlighterPlugin/dp.SyntaxHighlighter/Scripts/shBrushPlain.js 0644
 pub/System/DpSyntaxHighlighterPlugin/dp.SyntaxHighlighter/Scripts/shBrushPython.js 0644
 pub/System/DpSyntaxHighlighterPlugin/dp.SyntaxHighlighter/Scripts/shBrushRuby.js 0644
 pub/System/DpSyntaxHighlighterPlugin/dp.SyntaxHighlighter/Scripts/shBrushSql.js 0644

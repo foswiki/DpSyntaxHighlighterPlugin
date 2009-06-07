@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# Copyright (C) 2007 - 2009 Andrew Jones, andrewjones86@googlemail.com
+# Copyright (C) 2007 - 2009 Andrew Jones, http://andrew-jones.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -20,7 +20,7 @@ use strict;
 use vars qw( $VERSION $RELEASE $NO_PREFS_IN_TOPIC $SHORTDESCRIPTION $pluginName $rootDir $doneHead );
 
 our $VERSION = '$Rev: 9813$';
-our $RELEASE = '1.2';
+our $RELEASE = '1.3';
 our $pluginName = 'DpSyntaxHighlighterPlugin';
 our $NO_PREFS_IN_TOPIC = 1;
 our $SHORTDESCRIPTION = 'Client side syntax highlighting using the [[http://code.google.com/p/syntaxhighlighter/][dp.SyntaxHighlighter]]';
@@ -80,21 +80,27 @@ sub _handleTag {
     # brush
     my $brush = '';
     for ($lang){
-	/as3|actionscript3/i and $brush = "AS3", last;
-	/css/i and $brush = "Css", last;
-	/c#|c-sharp|csharp/i and $brush = "CSharp", last;
-	/^c$|cpp|c\+\+/i and $brush = "Cpp", last;
-	/vb|vb\.net/i and $brush = "Vb", last;
-	/delphi|pascal/i and $brush = "Delphi", last;
-	/js|jscript|javascript/i and $brush = "JScript", last;
-	/^java$/i and $brush = "Java", last;
-	/php/i and $brush = "Php", last;
-	/pl|perl/i and $brush = "Perl", last;
-	/py|python/i and $brush = "Python", last;
-	/ruby|ror|rails/i and $brush = "Ruby", last;
-	/sql/i and $brush = "Sql", last;
-	/xml|xhtml|xslt|html/i and $brush = "Xml", last;
+	/as3|actionscript3/ and $brush = "AS3", last;
+	/css/ and $brush = "Css", last;
+	/c#|c-sharp|csharp/ and $brush = "CSharp", last;
+	/^c$|cpp|c\+\+/ and $brush = "Cpp", last;
+	/vb|vb\.net/ and $brush = "Vb", last;
+	/delphi|pascal/ and $brush = "Delphi", last;
+	/js|jscript|javascript/ and $brush = "JScript", last;
+	/^java$/ and $brush = "Java", last;
+	/php/ and $brush = "Php", last;
+	/^pl$|perl/ and $brush = "Perl", last;
+	/plain|ascii/ and $brush = "Plain", last;
+	/py|python/ and $brush = "Python", last;
+	/ruby|ror|rails/ and $brush = "Ruby", last;
+	/sql/ and $brush = "Sql", last;
+	/xml|xhtml|xslt|html/ and $brush = "Xml", last;
     }
+
+    # language not found; return error
+    return "<span class='foswikiAlert'>$pluginName error: The language \"$lang\" is not supported.</span>"
+        if $brush eq '';
+
     $out .= "<script type=\"text/javascript\" src='$rootDir/Scripts/shBrush$brush.js'></script>";
 		
     _doHead();
@@ -131,7 +137,7 @@ if (typeof jQuery != 'undefined') {
   // foswiki
   foswiki.Event.addLoadEvent(dp.SyntaxHighlighter.render);
 } else {
-  alert("Can't add load event for DpSyntaxHighlighterPlugin. Please contact your System Administrator.");
+  alert("Can't add load event for $pluginName. Please contact your System Administrator.");
 }
 </script>
 EOT
