@@ -20,7 +20,7 @@ use strict;
 use vars qw( $VERSION $RELEASE $NO_PREFS_IN_TOPIC $SHORTDESCRIPTION $pluginName $rootDir $doneHead );
 
 our $VERSION = '$Rev: 9813$';
-our $RELEASE = '1.4';
+our $RELEASE = '1.5';
 our $pluginName = 'DpSyntaxHighlighterPlugin';
 our $NO_PREFS_IN_TOPIC = 1;
 our $SHORTDESCRIPTION = 'Client side syntax highlighting using the [[http://code.google.com/p/syntaxhighlighter/][dp.SyntaxHighlighter]]';
@@ -98,7 +98,7 @@ sub _handleTag {
 	/jfx|javafx/ and $brush = "JavaFX", last;
 	/php/ and $brush = "Php", last;
 	/^pl$|[Pp]erl/ and $brush = "Perl", last;
-	/plain|text/ and $brush = "Plain", last;
+	/plain|text|ascii/ and $brush = "Plain", last;
 	/ps|powershell/ and $brush = "PowerShell", last;
 	/py|python/ and $brush = "Python", last;
 	/ruby|ror|rails/ and $brush = "Ruby", last;
