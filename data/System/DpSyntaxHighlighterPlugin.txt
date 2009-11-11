@@ -67,7 +67,7 @@ The following languages are supported:
    * java
    * javafx
    * pl, perl
-   * plain, ascii (no highlighting)
+   * plain, text, ascii (no highlighting)
    * php
    * py, python
    * ruby
@@ -106,6 +106,8 @@ function hello () {
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
 |  Dp Syntax Highlighter License: | [[http://www.gnu.org/copyleft/lesser.html][LGPL 3 (Gnu Lesser General Public License)]] |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  11 Nov 2009 | 1.6: Fix incompatibility with JSPopupPlugin (Foswikitask:Item2345) -- Foswiki:Main.AndrewJones |
+|  09 Nov 2009 | 1.5: Fix =ascii= highlighting (Foswikitask:Item2344) -- Foswiki:Main.AndrewJones |
 |  08 Nov 2009 | 1.4: Upgrade to version 2 of the highlighter and apply patch and docs from Foswiki:Main.JeffVStein (Foswikitask:Item8185) -- Foswiki:Main.AndrewJones |
 |  06 Jun 2009 | 1.3: Added support for pure ascii-output without highlighting (Foswikitask:Item8175); Return an error if the language is not supported -- Foswiki:Main.AndrewJones |
 |  29 Mar 2009 | 1.2: Added =%<nop>CODE_DP%= syntax so it can be used with other syntax highlighters (Foswikitask:Item1353) -- Foswiki:Main.AndrewJones |
