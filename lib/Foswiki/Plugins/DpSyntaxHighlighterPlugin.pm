@@ -129,7 +129,7 @@ sub _doHead {
 
     # CSS theme to use for output
     my $theme = Foswiki::Func::getPreferencesValue("\U$pluginName\_THEME");
-    $theme = 'Default' if $theme eq '';
+    $theme = 'Default' unless ( defined $theme && $theme ne '') ;
     $style .= "<link type='text/css' rel='stylesheet' href='$rootDir/styles/shTheme$theme.css' />";
     
     my $jsDefs = '';
