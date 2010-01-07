@@ -25,9 +25,10 @@ The code goes between the tags =%<nop>CODE{...}%= and =%ENDCODE%=.
 | =rows="value"= %BR% =cols="value"= | Sets the rows and columns attributes. %BR% Recommend if using textarea so the code can be seen clearly when !JavaScript is not available. |
 | =nowrap="on"= | Prevents line wrapping |
 | =ruler="on"=  | Adds a line character ruler to the top |
-| =smart-tabs="on"= | Semi-intelligent tabbing ([[http://alexgorbatchev.com/wiki/SyntaxHighlighter:Demo:smart-tabs][Demo]]) |
+| =nosmarttabs="on"= | Semi-intelligent tabbing ([[http://alexgorbatchev.com/wiki/SyntaxHighlighter:Demo:smart-tabs][Demo]]) |
 | =tab-size="value"= | Set the tab size for tab expansion |
 | =highlight="1,2,3"= | Highlight specific lines of code |
+| =noautolinks="on"= | Prevent links in the highlighted code being clickable |
 
 ---++ Plugin Preferences
 
@@ -102,10 +103,11 @@ function hello () {
 |  Plugin Release: | %$RELEASE% |
 |  Plugin Version: | %$VERSION% |
 |  Dp Syntax Highlighter Version: | 2.1.364 |
-|  Copyright: | &copy; 2007 - 2009 Foswiki:Main.AndrewJones |
+|  Copyright: | &copy; 2007 - 2010 Foswiki:Main.AndrewJones |
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
 |  Dp Syntax Highlighter License: | [[http://www.gnu.org/copyleft/lesser.html][LGPL 3 (Gnu Lesser General Public License)]] |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  07 Jan 2010 | 1.7: Add =noautolinks= parameter; Doc updates. Thanks to Foswiki:Main.AleksandarJelenak (Foswikitask:Item8363) -- Foswiki:Main.AndrewJones |
 |  11 Nov 2009 | 1.6: Fix incompatibility with JSPopupPlugin (Foswikitask:Item2345) -- Foswiki:Main.AndrewJones |
 |  09 Nov 2009 | 1.5: Fix =ascii= highlighting (Foswikitask:Item2344) -- Foswiki:Main.AndrewJones |
 |  08 Nov 2009 | 1.4: Upgrade to version 2 of the highlighter and apply patch and docs from Foswiki:Main.JeffVStein (Foswikitask:Item8185) -- Foswiki:Main.AndrewJones |

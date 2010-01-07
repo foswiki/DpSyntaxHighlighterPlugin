@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# Copyright (C) 2007 - 2009 Andrew Jones, http://andrew-jones.com
+# Copyright (C) 2007 - 2010 Andrew Jones, http://andrew-jones.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -20,7 +20,7 @@ use strict;
 use vars qw( $VERSION $RELEASE $NO_PREFS_IN_TOPIC $SHORTDESCRIPTION $pluginName $rootDir $doneHead );
 
 our $VERSION = '$Rev: 9813$';
-our $RELEASE = '1.6';
+our $RELEASE = '1.7';
 our $pluginName = 'DpSyntaxHighlighterPlugin';
 our $NO_PREFS_IN_TOPIC = 1;
 our $SHORTDESCRIPTION = 'Client side syntax highlighting using the [[http://code.google.com/p/syntaxhighlighter/][dp.SyntaxHighlighter]]';
@@ -56,12 +56,13 @@ sub _handleTag {
     my $out = "<$el name='code' class='brush: $lang\;";
     
     # attributes
+    $out .= " auto-links: false;" if lc$params{noautolinks} eq 'on';
     $out .= " gutter: false;" if lc$params{nogutter} eq 'on';
     $out .= " toolbar: false;" if lc$params{nocontrols} eq 'on';
     $out .= " collapse: true;" if lc$params{collapse} eq 'on';
     $out .= " first-line: $params{firstline};" if $params{firstline};
     $out .= " wrap-lines: false;" if lc$params{nowrap} eq 'on';
-    $out .= " ruler: true;" if lc$params{ ruler} eq 'on';
+    $out .= " ruler: true;" if lc$params{ruler} eq 'on';
     $out .= " smart-tabs: false;" if lc$params{nosmarttabs} eq 'on';
     $out .= " tab-size: $params{tabsize};" if $params{tabsize};
     $out .= " highlight: [$params{highlight}];" if $params{highlight};
