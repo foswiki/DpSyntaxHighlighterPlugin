@@ -170,15 +170,10 @@ var sh = {
 			
 			for (var name in items) 
 			{
-                
 				var constructor = items[name],
-					command = new constructor(highlighter);
-                    
-                // quick fix for using with JSPopupPlugin's json.js
-                if(! command.create ){
-                    continue;
-                }
-                var element = command.create();
+					command = new constructor(highlighter),
+					element = command.create()
+					;
 				
 				highlighter.toolbarCommands[name] = command;
 				

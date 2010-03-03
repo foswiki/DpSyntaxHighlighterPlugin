@@ -19,8 +19,8 @@ use strict;
 
 use vars qw( $VERSION $RELEASE $NO_PREFS_IN_TOPIC $SHORTDESCRIPTION $pluginName $rootDir $doneHead );
 
-our $VERSION = '$Rev: 9813$';
-our $RELEASE = '1.7';
+our $VERSION = '$Rev$';
+our $RELEASE = '1.8';
 our $pluginName = 'DpSyntaxHighlighterPlugin';
 our $NO_PREFS_IN_TOPIC = 1;
 our $SHORTDESCRIPTION = 'Client side syntax highlighting using the [[http://code.google.com/p/syntaxhighlighter/][dp.SyntaxHighlighter]]';
@@ -112,7 +112,10 @@ sub _handleTag {
     return "<span class='foswikiAlert'>$pluginName error: The language \"$lang\" is not supported.</span>"
         if $brush eq '';
 
-    $out .= "<script type=\"text/javascript\" src='$rootDir/scripts/shBrush$brush.js'></script>";
+    #$out .= "<script type=\"text/javascript\" src='$rootDir/scripts/shBrush$brush.js'></script>";
+    Foswiki::Func::addToHEAD( $pluginName . '::LANG::' . $brush, 
+      "<script type=\"text/javascript\" src='$rootDir/scripts/shBrush$brush.js'></script>",
+      $pluginName);
 		
     _doHead();
 	
@@ -182,7 +185,8 @@ if (typeof jQuery != 'undefined') {
 </script>
 EOT
 
-    Foswiki::Func::addToHEAD( $pluginName, $style . $core . $script );
+    Foswiki::Func::addToHEAD( $pluginName . '::STYLE', $style );
+    Foswiki::Func::addToHEAD( $pluginName, $core . $script );
 }
 
 1;
