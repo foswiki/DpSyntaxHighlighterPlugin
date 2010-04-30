@@ -16,6 +16,7 @@
 
 package Foswiki::Plugins::DpSyntaxHighlighterPlugin;
 use strict;
+use warnings;
 
 use vars qw( $VERSION $RELEASE $NO_PREFS_IN_TOPIC $SHORTDESCRIPTION $pluginName $rootDir $doneHead );
 
@@ -40,21 +41,64 @@ sub initPlugin {
 
 sub commonTagsHandler {
 
-    $_[0] =~ s/%CODE(?:_DP)?{(.*?)}%\s*(.*?)%ENDCODE%/&_handleTag/egs;
+    $_[0] =~ s/%CODE(?:_DP)?{(.*?)}%\s*(.*?)%ENDCODE%/&_handleTag($1, $2)/egs;
 
+   return;
+}
+
+sub _addScript {
+   my ($tag, $text, $requires) = @_;
+
+   if (!$Foswiki::cfg{Plugins}{ZonePlugin}{Enabled} &&
+      $Foswiki::Plugins::VERSION < 2.1) {
+      Foswiki::Func::addToHEAD($tag, $text, $requires);
+   } else {
+      Foswiki::Func::addToZone('body', $tag, $text, $requires);
+   }
+
+   return;
+}
+
+sub _parseLang {
+    my ($lang) = @_;
+
+    if ($lang) {
+	return 'AS3' if ($lang =~ /as3|actionscript3/);
+	return 'Css' if ($lang =~ /css/);
+	return 'Bash' if ($lang =~ /bash|shell/);
+	return 'CSharp' if ($lang =~ /c#|c-sharp|csharp/);
+	return 'Cpp' if ($lang =~ /^c$|cpp/);
+	return 'Vb' if ($lang =~ /vb|vbnet/);
+	return 'Delphi' if ($lang =~ /delphi|pascal/);
+	return 'Diff' if ($lang =~ /diff|patch/);
+	return 'Groovy' if ($lang =~ /groovy/);
+	return 'JScript' if ($lang =~ /js|jscript|javascript/);
+	return 'Java' if ($lang =~ /^java$/);
+	return 'JavaFX' if ($lang =~ /jfx|javafx/);
+	return 'Php' if ($lang =~ /php/);
+	return 'Perl' if ($lang =~ /^pl$|[Pp]erl/);
+	return 'Plain' if ($lang =~ /plain|text|ascii/);
+	return 'PowerShell' if ($lang =~ /ps|powershell/);
+	return 'Python' if ($lang =~ /py|python/);
+	return 'Ruby' if ($lang =~ /ruby|ror|rails/);
+	return 'Scala' if ($lang =~ /scala/);
+	return 'Sql' if ($lang =~ /sql/);
+	return 'Xml' if ($lang =~ /xml|xhtml|xslt|html/);
+    }
+
+    return '';
 }
 
 # handles the tag
 sub _handleTag {
-
-    my %params = Foswiki::Func::extractParameters($1);
+    my ($rawParams, $code) = @_;
+    my %params = Foswiki::Func::extractParameters($rawParams);
     my $el = (lc$params{el} eq 'textarea' ? 'textarea' : 'pre');
     my $lang = lc$params{lang} || lc$params{_DEFAULT}; # language
-    my $code = $2; # code to highlight
 
     # start
     my $out = "<$el name='code' class='brush: $lang\;";
-    
+
     # attributes
     $out .= " auto-links: false;" if lc$params{noautolinks} eq 'on';
     $out .= " gutter: false;" if lc$params{nogutter} eq 'on';
@@ -83,42 +127,19 @@ sub _handleTag {
     $out .= "</$el>";
 
     # brush
-    my $brush = '';
-    for ($lang){
-	/as3|actionscript3/ and $brush = "AS3", last;
-	/css/ and $brush = "Css", last;
-	/bash|shell/ and $brush = "Bash", last;
-	/c#|c-sharp|csharp/ and $brush = "CSharp", last;
-	/^c$|cpp/ and $brush = "Cpp", last;
-	/vb|vbnet/ and $brush = "Vb", last;
-	/delphi|pascal/ and $brush = "Delphi", last;
-	/diff|patch/ and $brush = "Diff", last;
-	/groovy/ and $brush = "Groovy", last;
-	/js|jscript|javascript/ and $brush = "JScript", last;
-	/^java$/ and $brush = "Java", last;
-	/jfx|javafx/ and $brush = "JavaFX", last;
-	/php/ and $brush = "Php", last;
-	/^pl$|[Pp]erl/ and $brush = "Perl", last;
-	/plain|text|ascii/ and $brush = "Plain", last;
-	/ps|powershell/ and $brush = "PowerShell", last;
-	/py|python/ and $brush = "Python", last;
-	/ruby|ror|rails/ and $brush = "Ruby", last;
-	/scala/ and $brush = "Scala", last;
-	/sql/ and $brush = "Sql", last;
-	/xml|xhtml|xslt|html/ and $brush = "Xml", last;
-    }
+    my $brush = _parseLang($lang);
 
     # language not found; return error
     return "<span class='foswikiAlert'>$pluginName error: The language \"$lang\" is not supported.</span>"
         if $brush eq '';
 
     #$out .= "<script type=\"text/javascript\" src='$rootDir/scripts/shBrush$brush.js'></script>";
-    Foswiki::Func::addToHEAD( $pluginName . '::LANG::' . $brush, 
+    _addScript($pluginName . '::LANG::' . $brush,
       "<script type=\"text/javascript\" src='$rootDir/scripts/shBrush$brush.js'></script>",
-      $pluginName);
-		
+      $pluginName . '::SCRIPT');
+
     _doHead();
-	
+
     return $out;
 }
 
@@ -135,7 +156,7 @@ sub _doHead {
     my $theme = Foswiki::Func::getPreferencesValue("\U$pluginName\_THEME");
     $theme = 'Default' if $theme eq '';
     $style .= "<link type='text/css' rel='stylesheet' href='$rootDir/styles/shTheme$theme.css' />";
-    
+
     my $jsDefs = '';
 
     # Hide about/print buttons
@@ -147,16 +168,16 @@ sub _doHead {
     }
 
     # SyntaxHighlighter normally tries to guess the width of a space by
-    # measuring it through javascript. When measuring, it appends the item 
-    # to the document.body, so font-size may not match the Foswiki theme. 
+    # measuring it through javascript. When measuring, it appends the item
+    # to the document.body, so font-size may not match the Foswiki theme.
     #
     # This allows an override in WebPreferences. The value is in pixels.
     #    Set DPSYNTAXHIGHLIGHTERPLUGIN_SPACEWIDTH = 8
     my $spaceWidth = Foswiki::Func::getPreferencesValue("\U$pluginName\_SPACEWIDTH");
-    if ($spaceWidth ne '') {
+    if (defined $spaceWidth and $spaceWidth ne '') {
         $jsDefs .= "\n  SyntaxHighlighter.vars.spaceWidth = $spaceWidth;";
     }
-            
+
     # core javascript file
     my $core = "<script type=\"text/javascript\" src='$rootDir/scripts/shCore.js'></script>";
 
@@ -186,7 +207,9 @@ if (typeof jQuery != 'undefined') {
 EOT
 
     Foswiki::Func::addToHEAD( $pluginName . '::STYLE', $style );
-    Foswiki::Func::addToHEAD( $pluginName, $core . $script );
+    _addScript($pluginName . '::SCRIPT', $core . $script );
+
+    return;
 }
 
 1;

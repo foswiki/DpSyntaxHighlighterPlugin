@@ -118,7 +118,7 @@ You should add an override to your CSS customisations that has the following eff
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
 |  Dp Syntax Highlighter License: | [[http://www.gnu.org/copyleft/lesser.html][LGPL 3 (Gnu Lesser General Public License)]] |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
-|  03 Mar 2010 | 1.8: Improve JQueryPlugin+ZonePlugin support, added CSS notes for NatSkin users |
+|  30 Apr 2010 | 1.8: Improve JQueryPlugin+ZonePlugin support, added CSS notes for NatSkin users, ship .gz compressed CSS and JS files, address some perlcritic-isms |
 |  07 Jan 2010 | 1.7: Add =noautolinks= parameter; Doc updates. Thanks to Foswiki:Main.AleksandarJelenak (Foswikitask:Item8363) -- Foswiki:Main.AndrewJones |
 |  11 Nov 2009 | 1.6: Fix incompatibility with JSPopupPlugin (Foswikitask:Item2345) -- Foswiki:Main.AndrewJones |
 |  09 Nov 2009 | 1.5: Fix =ascii= highlighting (Foswikitask:Item2344) -- Foswiki:Main.AndrewJones |
