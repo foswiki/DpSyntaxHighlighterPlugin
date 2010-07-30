@@ -21,7 +21,7 @@ use warnings;
 use vars qw( $VERSION $RELEASE $NO_PREFS_IN_TOPIC $SHORTDESCRIPTION $pluginName $rootDir $doneHead );
 
 our $VERSION = '$Rev$';
-our $RELEASE = '1.8';
+our $RELEASE = '1.9';
 our $pluginName = 'DpSyntaxHighlighterPlugin';
 our $NO_PREFS_IN_TOPIC = 1;
 our $SHORTDESCRIPTION = 'Client side syntax highlighting using the [[http://code.google.com/p/syntaxhighlighter/][dp.SyntaxHighlighter]]';
@@ -153,8 +153,7 @@ sub _doHead {
     my $style = "<link type='text/css' rel='stylesheet' href='$rootDir/styles/shCore.css' />";
 
     # CSS theme to use for output
-    my $theme = Foswiki::Func::getPreferencesValue("\U$pluginName\_THEME");
-    $theme = 'Default' if $theme eq '';
+    my $theme = Foswiki::Func::getPreferencesValue("\U$pluginName\_THEME") || 'Default';
     $style .= "<link type='text/css' rel='stylesheet' href='$rootDir/styles/shTheme$theme.css' />";
 
     my $jsDefs = '';
