@@ -53,7 +53,7 @@ sub _addScript {
       $Foswiki::Plugins::VERSION < 2.1) {
       Foswiki::Func::addToHEAD($tag, $text, $requires);
    } else {
-      Foswiki::Func::addToZone('body', $tag, $text, $requires);
+      Foswiki::Func::addToZone('script', $tag, $text, $requires);
    }
 
    return;
