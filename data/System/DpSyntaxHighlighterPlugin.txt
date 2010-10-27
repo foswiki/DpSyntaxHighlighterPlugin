@@ -98,7 +98,7 @@ function hello () {
 %ENDCODE%
 
 ---+++ NatSkin users
-BaseStyle.css sets 
+!BaseStyle.css sets 
 %CODE{"css"}%.natMainContents {
     min-height: 40em;
 }%ENDCODE%
@@ -118,6 +118,7 @@ You should add an override to your CSS customisations that has the following eff
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
 |  Dp Syntax Highlighter License: | [[http://www.gnu.org/copyleft/lesser.html][LGPL 3 (Gnu Lesser General Public License)]] |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  27 Oct 2010 | 2.0: Fix for Foswiki 1.1 (Foswikitask:Item9883); Fix when ={JQueryPlugin}{NoConflict}= enabled (Foswikitask:Item8358); Fix =ascii= highlighting -- Foswiki:Main.AndrewJones |
 |  31 Jul 2010 | 1.9: Fix Perl warning in logs (Foswikitask:Item9414) -- Foswiki:Main.AndrewJones |
 |  30 Apr 2010 | 1.8: Improve JQueryPlugin+ZonePlugin support, added CSS notes for NatSkin users, ship .gz compressed CSS and JS files, address some perlcritic-isms (Foswikitask:Item8654) -- Foswiki:Main.PaulHarvey |
 |  07 Jan 2010 | 1.7: Add =noautolinks= parameter; Doc updates. Thanks to Foswiki:Main.AleksandarJelenak (Foswikitask:Item8363) -- Foswiki:Main.AndrewJones |

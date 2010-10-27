@@ -21,7 +21,7 @@ use warnings;
 use vars qw( $VERSION $RELEASE $NO_PREFS_IN_TOPIC $SHORTDESCRIPTION $pluginName $rootDir $doneHead );
 
 our $VERSION = '$Rev$';
-our $RELEASE = '1.9';
+our $RELEASE = '2.0';
 our $pluginName = 'DpSyntaxHighlighterPlugin';
 our $NO_PREFS_IN_TOPIC = 1;
 our $SHORTDESCRIPTION = 'Client side syntax highlighting using the [[http://code.google.com/p/syntaxhighlighter/][dp.SyntaxHighlighter]]';
@@ -192,7 +192,7 @@ SyntaxHighlighter.render = function(){
 }
 if (typeof jQuery != 'undefined') {
   // jQuery
-  \$(document).ready(SyntaxHighlighter.render);
+  jQuery(document).ready(SyntaxHighlighter.render);
 } else if (typeof YAHOO != "undefined") {
   // YUI
   YAHOO.util.Event.onDOMReady(SyntaxHighlighter.render);
