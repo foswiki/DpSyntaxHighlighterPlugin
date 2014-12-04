@@ -1,3 +1,11 @@
 *.gz
+.swp
 git
 pub/System/DpSyntaxHighlighterPlugin/shInit.js
+DpSyntaxHighlighterPlugin.md5
+DpSyntaxHighlighterPlugin.sha1
+DpSyntaxHighlighterPlugin.tgz
+DpSyntaxHighlighterPlugin.txt
+DpSyntaxHighlighterPlugin.zip
+DpSyntaxHighlighterPlugin_installer
+DpSyntaxHighlighterPlugin_installer.pl
