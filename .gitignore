@@ -1,0 +1,3 @@
+*.gz
+git
+pub/System/DpSyntaxHighlighterPlugin/shInit.js

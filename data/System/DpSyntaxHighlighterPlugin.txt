@@ -1,11 +1,8 @@
-%META:TOPICINFO{author="ProjectContributor" date="1179177105" format="1.1" version="1.1"}%
+%META:TOPICINFO{author="ProjectContributor" date="1417701005" format="1.1" version="1"}%
 ---+!! !DpSyntaxHighlighterPlugin
-<!--
-One line description, required for extensions repository catalog.
-   * Set SHORTDESCRIPTION = Client side syntax highlighting using the [[http://alexgorbatchev.com/wiki/SyntaxHighlighter][dp.SyntaxHighlighter]]
--->
+%SHORTDESCRIPTION%
 
-This plugin provides client side syntax highlighting using the [[http://alexgorbatchev.com/wiki/SyntaxHighlighter][dp.SyntaxHighlighter]] by Alex Gorbatchev. !JavaScript needs to be enabled on the clients web browser for this to work.
+This plugin provides client side syntax highlighting using the [[http://alexgorbatchev.com/SyntaxHighlighter][SyntaxHighlighter]] by Alex Gorbatchev. !JavaScript needs to be enabled on the clients web browser for this to work.
 
 %TOC%
 
@@ -15,30 +12,22 @@ The code goes between the tags =%<nop>CODE{...}%= and =%ENDCODE%=.
 
 =%<nop>CODE{...}%= can have the following parameters:
 | *Parameter* | *Description* |
-| ="..."= or =lang="..."= | The programming language to be highlighted. See <a href="#Supported_Languages">Supported Languages</a>. |
-| =nogutter="on"= | Will not display the gutter. |
-| =nocontrols="on"= | Will not display controls at the top. |
-| =collapse="on"= | Will collapse the block by default. |
-| =firstline="value"= | Will begin line count at value. Default value is 1. |
-| =showcolumns="on"= | Will show row columns in the first line. |
-| =el="..."= | HTML element to display the code in. Can be =pre= or =textarea=. Default is =pre=. See [[#Pre_vs_Textarea]]. |
-| =rows="value"= %BR% =cols="value"= | Sets the rows and columns attributes. %BR% Recommend if using textarea so the code can be seen clearly when !JavaScript is not available. |
-| =nowrap="on"= | Prevents line wrapping |
-| =ruler="on"=  | Adds a line character ruler to the top |
-| =nosmarttabs="on"= | Semi-intelligent tabbing ([[http://alexgorbatchev.com/wiki/SyntaxHighlighter:Demo:smart-tabs][Demo]]) |
-| =tab-size="value"= | Set the tab size for tab expansion |
-| =highlight="1,2,3"= | Highlight specific lines of code |
-| =noautolinks="on"= | Prevent links in the highlighted code being clickable |
-
----++ Plugin Preferences
-
-The following options can be set, either in %LOCALSITEPREFS% or WebPreferences.
-
-| *Example* | *Description* |
-| =DPSYNTAXHIGHLIGHTERPLUGIN_THEME = Default= | The theme to use for code highlighting - several are included with !SyntaxHighlighter |
-| =DPSYNTAXHIGHLIGHTERPLUGIN_HIDE_ABOUT = ON= | Hides the "About" button if enabled. |
-| =DPSYNTAXHIGHLIGHTERPLUGIN_HIDE_PRINT = ON= | Hides the "Print" button if enabled. |
-| =DPSYNTAXHIGHLIGHTERPLUGIN_SPACEWIDTH = 8= | Number of pixels to use for a space when expanding tabs. Normally discovered through javascript but may be incorrect depending on the wiki skin. 8 is a good value for PatternSkin in my environment. |
+| ="..."= or =lang="..."= | the programming language to be highlighted. see <a href="#Supported_Languages">Supported Languages</a>. |
+| =autolink="on"= | prevent links in the highlighted code being clickable |
+| =collapse="on"= | force code view to be collapsed |
+| =firstline="value"= | begin line count at value; default value is 1 |
+| =gutter="on"= | enable or disable gutter |
+| =highlight="1,2,3"= | highlight specific lines of code |
+| =smarttabs="on"= | enable or disable smart tabs; note this will only work if there are tabs in your code. |
+| =tabsize="value"= | wet the tab size for tab expansion; default value is 4; note this will only work if there are tabs in your code |
+| =padlinenumbers="value"= | pads line numbers. possible values are <ul>\
+  <li>false - don't pad line numbers.</li> \
+  <li>true  - automaticaly pad numbers with minimum required number of leading zeroes.</li> \
+  <li>[int] - length up to which pad line numbers.</li> </ul> |
+| =toolbar="on"= | enable or disable the toolbar |
+| =quickcode="on"= | enable code copy and paste from double click |
+| =light="on"= | light mode: equavalent to turning off gutter and toolbar |
+| =htmlscript="on"= | allows you to highlight a mixture of HTML/XML code and a script |
 
 ---++ Using %TOPIC% With Other Syntax Highlighters
 
@@ -48,42 +37,66 @@ Version 1.2 of this plugin added support for using the =%<nop>CODE_DP%= syntax, 
 
 Clearly this is not the best solution to the problem of using more than one highlighting plugin. You can read the background on why this approach was taken in the [[Foswikitask:Item1353][task report]].
 
----++ Pre vs Textarea
-
-There are known problems when displaying XML (and HTML) in a =pre= element. See http://code.google.com/p/syntaxhighlighter/wiki/PreAndTextarea for more information.
-
 ---++ Supported Languages
 
 The following languages are supported:
 
-   * as3, actionscript3
-   * bash
-   * css
-   * c#, c-sharp, csharp
-   * c, cpp, c++
-   * delphi, pascal
-   * diff
-   * groovy
-   * js, jscript, javascript
-   * java
-   * javafx
-   * pl, perl
-   * plain, text, ascii (no highlighting)
-   * php
-   * py, python
-   * ruby
-   * scala
-   * sql
-   * vb, vb.net
-   * xml, xhtml, xslt, html, xhtml
+<noautolink>
+| *Brush* | *Aliases* |
+| ActionScript3    | as3, actionScript3 |
+| AppleScript      | applescript, as |
+| Bash/shell       | bash, shell, sh |
+| C#               | c#, c-sharp, csharp |
+| C++              | cpp, cc, c++, c, h, hpp, h++ |
+| ColdFusion       | cf, coldfusion |
+| CSS              | css |
+| Delphi           | delphi, pas, pascal |
+| Diff             | diff, patch |
+| Erlang           | erl, erlang |
+| Groovy           | groovy |
+| Haxe             | haxe, hx |
+| JavaFX           | javafx, jfx |
+| Java             | java |
+| JavaScript       | jscript, js, javascript, json |
+| Perl             | perl, pl |
+| PHP              | php |
+| Plain Text       | plain, text, txt, ascii |
+| PowerShell       | powershell, ps, posh |
+| Python           | python, py |
+| Ruby             | ruby, rails, ror, rb |
+| Sass             | sass, sccs |
+| Scala            | scala |
+| SQL              | sql |
+| TAP              | tap |
+| TypeScript       | ts, typescript |
+| Visual Basic     | vb, vbnet, visualbasic  |
+| XML              | xml, xhtml, xslt, html, plist |
+</noautolink>
 
 Any of these can be used in the =lang= parameter.
+
+---++ Theming
+
+There are a couple of themes to colorize the highlighted code differently. Use 
+
+<verbatim>   * Set DPSYNTAXHIGHLIGHTERPLUGIN_THEME = <theme> </verbatim>
+
+to chose from one of the provided themes:
+
+   * default
+   * django
+   * eclipse
+   * emacs
+   * fadetogray
+   * mdultra
+   * midnight
+   * rdark
 
 ---++ Examples
 
 Below is a screen shot of how the rendered code will look.
 
-<img src="%ATTACHURLPATH%/screenshot.png" alt="screenshot of plugin" width='592' height='422' />
+<img src="%ATTACHURLPATH%/screenshot.png" alt="screenshot of plugin" width='637' height='358' />
 
 ---++ Installation Instructions
 
@@ -91,38 +104,49 @@ Below is a screen shot of how the rendered code will look.
 
 If the plugin is installed correcty, the following should be rendered:
 
-%CODE{ lang="javascript" }%
-function hello () {
-    alert('hello // world');
+%CODE{"php" highlight="2,5" autolink="off"}%
+/***********************************
+ ** Multiline block comments
+ **********************************/
+ 
+$stringWithUrl = "http://alexgorbatchev.com";
+$stringWithUrl = 'hello world';
+ 
+ob_start("parseOutputBuffer");      // Start Code Buffering
+session_start();
+ 
+function parseOutputBuffer($buf) {
+    global $portal_small_code, $portal_gzcompress;
+    global $PHP_SELF, $HTTP_ACCEPT_ENCODING;
+ 
+    // cleaning out the code.
+    if($portal_small_code && !$portal_gzcompress) {
+        $buf = str_replace("    ", "", $buf);
+        $buf = str_replace("\n", "", $buf);
+        $buf = str_replace(chr(13), "", $buf);
+    }
 }
 %ENDCODE%
 
----+++ NatSkin users
-!BaseStyle.css sets 
-%CODE{"css"}%.natMainContents {
-    min-height: 40em;
-}%ENDCODE%
 
-You should add an override to your CSS customisations that has the following effect:
-%CODE{"css"}%.natMainContents {
-    min-height: 0;
-}%ENDCODE%
-
----++ Plugin Info
-
+---++ Info
+<!--
+   * Set SHORTDESCRIPTION = %$SHORTDESCRIPTION%
+-->
 |  Plugin Author(s): | Foswiki:Main.AndrewJones |
 |  Plugin Release: | %$RELEASE% |
 |  Plugin Version: | %$VERSION% |
-|  Dp Syntax Highlighter Version: | 2.1.364 |
-|  Copyright: | &copy; 2007 - 2010 Foswiki:Main.AndrewJones |
+|  Dp Syntax Highlighter Version: | 3.0.9 |
+|  Copyright: | &copy; 2007 - 2010 Foswiki:Main.AndrewJones; 2010 - 2014 &copy; Foswiki Contributors  |
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
 |  Dp Syntax Highlighter License: | [[http://www.gnu.org/copyleft/lesser.html][LGPL 3 (Gnu Lesser General Public License)]] |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  04 Dec 2014 | 3.0: Rewrite -- Foswiki:Main.MichaelDaum |
 |  27 Oct 2010 | 2.0: Fix for Foswiki 1.1 (Foswikitask:Item9883); Fix when ={JQueryPlugin}{NoConflict}= enabled (Foswikitask:Item8358); Fix =ascii= highlighting -- Foswiki:Main.AndrewJones |
 |  31 Jul 2010 | 1.9: Fix Perl warning in logs (Foswikitask:Item9414) -- Foswiki:Main.AndrewJones |
 |  30 Apr 2010 | 1.8: Improve JQueryPlugin+ZonePlugin support, added CSS notes for NatSkin users, ship .gz compressed CSS and JS files, address some perlcritic-isms (Foswikitask:Item8654) -- Foswiki:Main.PaulHarvey |
 |  07 Jan 2010 | 1.7: Add =noautolinks= parameter; Doc updates. Thanks to Foswiki:Main.AleksandarJelenak (Foswikitask:Item8363) -- Foswiki:Main.AndrewJones |
-|  11 Nov 2009 | 1.6: Fix incompatibility with JSPopupPlugin (Foswikitask:Item2345) -- Foswiki:Main.AndrewJones |
+|  11 Nov 2009 | 1.6: Fix incompatibility with <nop>JSPopupPlugin (Foswikitask:Item2345) -- Foswiki:Main.AndrewJones |
 |  09 Nov 2009 | 1.5: Fix =ascii= highlighting (Foswikitask:Item2344) -- Foswiki:Main.AndrewJones |
 |  08 Nov 2009 | 1.4: Upgrade to version 2 of the highlighter and apply patch and docs from Foswiki:Main.JeffVStein (Foswikitask:Item8185) -- Foswiki:Main.AndrewJones |
 |  06 Jun 2009 | 1.3: Added support for pure ascii-output without highlighting (Foswikitask:Item8175); Return an error if the language is not supported -- Foswiki:Main.AndrewJones |
@@ -134,6 +158,5 @@ You should add an override to your CSS customisations that has the following eff
 |  14646 | Fixed adding JS into highlighted HTML (#3) -- Foswiki:Main.AndrewJones |
 |  14642 | Upgrade highlighter to 1.5.1 -- Foswiki:Main.AndrewJones |
 |  14046 | Initial version -- Foswiki:Main.AndrewJones |
-|  Dp Syntax Highlighter Home | http://alexgorbatchev.com/wiki/SyntaxHighlighter |
 |  Plugin Home: | http://foswiki.org/Extensions/DpSyntaxHighlighterPlugin |
 |  Support: | http://foswiki.org/Support/DpSyntaxHighlighterPlugin |
