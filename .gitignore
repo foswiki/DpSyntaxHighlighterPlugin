@@ -1,5 +1,7 @@
 *.gz
 .swp
+*,v
+igp_*
 git
 pub/System/DpSyntaxHighlighterPlugin/shInit.js
 DpSyntaxHighlighterPlugin.md5
