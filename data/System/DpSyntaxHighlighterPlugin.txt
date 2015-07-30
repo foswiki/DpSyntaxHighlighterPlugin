@@ -141,6 +141,7 @@ function parseOutputBuffer($buf) {
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
 |  Dp Syntax Highlighter License: | [[http://www.gnu.org/copyleft/lesser.html][LGPL 3 (Gnu Lesser General Public License)]] |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  30 Jul 2015 | 3.01: Fix multiple uses of same brush (Foswikitask:Item13373) -- Foswiki:Main.JanKrueger |
 |  04 Dec 2014 | 3.0: Rewrite -- Foswiki:Main.MichaelDaum |
 |  27 Oct 2010 | 2.0: Fix for Foswiki 1.1 (Foswikitask:Item9883); Fix when ={JQueryPlugin}{NoConflict}= enabled (Foswikitask:Item8358); Fix =ascii= highlighting -- Foswiki:Main.AndrewJones |
 |  31 Jul 2010 | 1.9: Fix Perl warning in logs (Foswikitask:Item9414) -- Foswiki:Main.AndrewJones |
