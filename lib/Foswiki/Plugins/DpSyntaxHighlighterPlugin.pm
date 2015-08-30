@@ -1,6 +1,7 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
 # Copyright (C) 2007 - 2010 Andrew Jones, http://andrew-jones.com
+# Copyright (C) 2010-2015 Foswiki Contributors
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -22,10 +23,10 @@ use warnings;
 use Foswiki::Func ();
 use Foswiki::Plugins ();
 
-our $VERSION = '3.01';
-our $RELEASE = '3.01';
+our $VERSION = '3.02';
+our $RELEASE = '3.02';
 our $NO_PREFS_IN_TOPIC = 1;
-our $SHORTDESCRIPTION = 'Client side syntax highlighting using the [[http://alexgorbatchev.com/SyntaxHighlighter][SyntaxHighlighter]]';
+our $SHORTDESCRIPTION = 'Client side syntax highlighting using the [[https://github.com/syntaxhighlighter/syntaxhighlighter][SyntaxHighlighter]]';
 
 our $core;
 our $doneInit;
@@ -38,7 +39,7 @@ sub initPlugin {
 
 sub commonTagsHandler {
 
-  $_[0] =~ s/%CODE(?:_DP)?{(.*?)}%\s*(.*?)%ENDCODE%/&_handleTag($1, $2)/egs;
+  $_[0] =~ s/%CODE(?:_DP)?\{(.*?)\}%\s*(.*?)%ENDCODE(?:\{\})?%/&_handleTag($1, $2)/egs;
 
   return;
 }

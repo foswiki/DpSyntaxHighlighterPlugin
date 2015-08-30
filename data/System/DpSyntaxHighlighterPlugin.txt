@@ -2,7 +2,8 @@
 ---+!! !DpSyntaxHighlighterPlugin
 %SHORTDESCRIPTION%
 
-This plugin provides client side syntax highlighting using the [[http://alexgorbatchev.com/SyntaxHighlighter][SyntaxHighlighter]] by Alex Gorbatchev. !JavaScript needs to be enabled on the clients web browser for this to work.
+This plugin provides client side syntax highlighting using the [[https://github.com/syntaxhighlighter/syntaxhighlighter][SyntaxHighlighter]] by Alex Gorbatchev.
+!JavaScript needs to be enabled on the clients web browser for this to work.
 
 %TOC%
 
@@ -31,7 +32,9 @@ The code goes between the tags =%<nop>CODE{...}%= and =%ENDCODE%=.
 
 ---++ Using %TOPIC% With Other Syntax Highlighters
 
-Currently all the Foswiki syntax highlighting plugins use the same =%<nop>CODE%= syntax. This allows you to switch the highlighter you use without having to update all your topics to the new syntax. However, it also means that if you have two or more highlighting plugins installed on your system, the plugin that is first in =$Foswiki::cfg{PluginsOrder}= (or by default, first alphabetically) will consume all the =%<nop>CODE%= blocks.
+Currently all the Foswiki syntax highlighting plugins use the same =%<nop>CODE%= syntax. This allows you to switch the highlighter you use without having to update all your topics to the new syntax.
+However, it also means that if you have two or more highlighting plugins installed on your system, the plugin that is first in =$Foswiki::cfg{PluginsOrder}= (or by default, first alphabetically)
+will consume all the =%<nop>CODE%= blocks.
 
 Version 1.2 of this plugin added support for using the =%<nop>CODE_DP%= syntax, which allows you to explicitly which plugin you want to highlight your code.
 
@@ -77,7 +80,7 @@ Any of these can be used in the =lang= parameter.
 
 ---++ Theming
 
-There are a couple of themes to colorize the highlighted code differently. Use 
+There are a couple of themes to colorize the highlighted code differently. Use
 
 <verbatim>   * Set DPSYNTAXHIGHLIGHTERPLUGIN_THEME = <theme> </verbatim>
 
@@ -134,13 +137,14 @@ function parseOutputBuffer($buf) {
    * Set SHORTDESCRIPTION = %$SHORTDESCRIPTION%
 -->
 |  Plugin Author(s): | Foswiki:Main.AndrewJones |
-|  Plugin Release: | %$RELEASE% |
-|  Plugin Version: | %$VERSION% |
-|  Dp Syntax Highlighter Version: | 3.0.9 |
-|  Copyright: | &copy; 2007 - 2010 Foswiki:Main.AndrewJones; 2010 - 2014 &copy; Foswiki Contributors  |
+|  Copyright: | &copy; 2007 - 2010 Foswiki:Main.AndrewJones; 2010 - 2015 &copy; Foswiki Contributors  |
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
+|  Dp Syntax Highlighter Ver: | 3.0.9 |
 |  Dp Syntax Highlighter License: | [[http://www.gnu.org/copyleft/lesser.html][LGPL 3 (Gnu Lesser General Public License)]] |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  29 Aug 2015 | 3.02: Re-release from github source. Foswikitask:Item13605<br />\
+                Foswikitask:Item13641: Minor doc updates. Allow optional {} on ENDCODE macro. Fix regexes for Perl 5.22 compatibility. Refresh copyright. -- Foswiki:Main.GeorgeClark |
+|  29 Aug 2015 | 3.01(re-released): Fix typo in shInit.js that prevented version 3.01 to work (Foswikitask:Item13605) -- Foswiki:Main.RenMao |
 |  30 Jul 2015 | 3.01: Fix multiple uses of same brush (Foswikitask:Item13373) -- Foswiki:Main.JanKrueger |
 |  04 Dec 2014 | 3.0: Rewrite -- Foswiki:Main.MichaelDaum |
 |  27 Oct 2010 | 2.0: Fix for Foswiki 1.1 (Foswikitask:Item9883); Fix when ={JQueryPlugin}{NoConflict}= enabled (Foswikitask:Item8358); Fix =ascii= highlighting -- Foswiki:Main.AndrewJones |

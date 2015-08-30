@@ -1,6 +1,7 @@
 *.gz
 .swp
 *,v
+*,pfv
 igp_*
 git
 pub/System/DpSyntaxHighlighterPlugin/shInit.js

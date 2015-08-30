@@ -151,11 +151,11 @@
     }
 
     if (brush.def) {
-      def.then(callback);
+      brush.def.then(callback);
     } else {
       brush.def = jQuery.Deferred();
       brush.def.then(callback);
-      $.getScript(brush.url, function() { def.resolve(); });
+      $.getScript(brush.url, function() { brush.def.resolve(); });
     }
 
   }
